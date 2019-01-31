@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="@string/allContacts"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mRecyclerView"/>
+
+
+    </LinearLayout>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/bottomAppbar"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabAlignmentMode="end"
+        app:fabCradleRoundedCornerRadius="50dp"
+        android:layout_gravity="bottom">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addContacts"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="@string/AddContacts"
+            android:textColor="@android:color/white"
+            app:iconTint="@android:color/white"
+            app:rippleColor="@color/colorAccent"
+            app:iconPadding="10dp"
+            app:icon="@drawable/ic_add_black_24dp"/>
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sendMessage"
+        android:src="@drawable/ic_send_black_24dp"
+        app:layout_anchor="@id/bottomAppbar"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

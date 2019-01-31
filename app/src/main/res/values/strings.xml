@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SendSms</string>
+    <string name="AddContacts">Add Contacts</string>
+    <string name="showContactList">Show contacts list</string>
+    <string name="allContacts">All Contacts in The Database</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone number</string>
+</resources>
