@@ -2,20 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/background"
     android:minHeight="50dp">
 
     <TextView
+        android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:textColor="@android:color/background_dark"
-        android:id="@+id/tvName"/>
+        android:textSize="15sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#2A2E49" />
 
     <TextView
+        android:id="@+id/tvNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:textColor="@android:color/background_dark"
-        android:id="@+id/tvNumber"/>
+        android:textSize="11sp"
+        android:fontFamily="@font/graduate"
+        android:textColor="#474A69" />
 
 </LinearLayout>

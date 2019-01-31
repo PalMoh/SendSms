@@ -37,8 +37,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Contacts contacts = this.contactsList.get(position);
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-        myViewHolder.tvName.setText(contacts.getContactName());
-        myViewHolder.tvNumber.setText(contacts.getContactNumber());
+        myViewHolder.tvName.setText(String.format("Name: %s", contacts.getContactName()));
+        myViewHolder.tvNumber.setText(String.format("Number: %s", contacts.getContactNumber()));
 
 
     }

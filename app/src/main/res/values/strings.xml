@@ -5,4 +5,5 @@
     <string name="allContacts">All Contacts in The Database</string>
     <string name="name">Name</string>
     <string name="phone_number">Phone number</string>
+    <string name="noContacts">No Contacts Found Please Add Some Contacts..</string>
 </resources>
