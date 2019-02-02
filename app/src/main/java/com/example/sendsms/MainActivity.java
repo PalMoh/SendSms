@@ -257,11 +257,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendMessage() {
         String message = "enter your message here";
+        
+         // Get the default instance of the SmsManager   
         SmsManager smsManager = SmsManager.getDefault();
 
         for (int i = 0; i < contactsList.size(); i++) {
             try {
-                // Get the default instance of the SmsManager
+             
                 smsManager.sendTextMessage(contactsList.get(i).getContactNumber(),
                         null,
                         message,
