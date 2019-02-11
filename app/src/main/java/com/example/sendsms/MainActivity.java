@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sendsms.Adapter.MyAdapter;
+import com.example.sendsms.Interfaces.CustomLongClick;
 import com.example.sendsms.Model.Contacts;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CustomLongClick {
 
 
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
@@ -52,47 +53,21 @@ public class MainActivity extends AppCompatActivity {
     private List<Contacts> contactsList = new ArrayList<>();
     private MyAdapter adapter;
 
-    private FirebaseAuth mAuth;
     private DatabaseReference dbRef;
 
     private FloatingActionButton fabSend;
     private Button btnAddContacts;
     private View viewNoContacts;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG,"onStart");
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser !=null) {
-            Log.d(TAG,"The user is not null");
-            updateCurrentUser(currentUser);
-        }
-        else {
-            Log.d(TAG,"The user is null ");
-            // you can sing in using email and password or google account instead ..
-            
-            mAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                        updateCurrentUser(firebaseUser);
-                        Toast.makeText(MainActivity.this, "Sing in Anonymously", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            });
-        }
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        dbRef = db.getReference();
+
 
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.SEND_SMS)
@@ -109,20 +84,13 @@ public class MainActivity extends AppCompatActivity {
 
         initTheUIViews();
         bindRecyclerView();
+        getAllContacts();
+
         bindBtnSendOnClick();
         bindAddContactsClick();
 
     }
 
-    private void updateCurrentUser(FirebaseUser firebaseUser){
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        String userUID = firebaseUser.getUid();
-        dbRef = db.getReference(userUID);
-        Log.d(TAG, userUID);
-
-        getAllContacts();
-
-    }
 
     private void bindAddContactsClick() {
         btnAddContacts.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
-        adapter = new MyAdapter(contactsList);
+        adapter = new MyAdapter(contactsList,this);
         mRecyclerView.setAdapter(adapter);
     }
 
@@ -288,5 +256,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    @Override
+    public void onLongClick(Contacts contacts, int position) {
+        contactsList.remove(contacts);
+        adapter.notifyItemRemoved(position);
+        // delete contacts form database here
     }
 }

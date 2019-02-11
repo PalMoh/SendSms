@@ -23,6 +23,58 @@
           }
         },
         {
+          "client_id": "198352650537-k6maefj0srl68n3op2c4s0uio9jvhab7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sendsms",
+            "certificate_hash": "ea8641a705a75e3c843514ca2ad40081b889defd"
+          }
+        },
+        {
+          "client_id": "198352650537-u4tor8l433bvs7uvto5bea31aorf8mqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBD0ja1NmL9QzhoCdcLv4mDQiwn-6E5Ko"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198352650537-u4tor8l433bvs7uvto5bea31aorf8mqm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198352650537:android:850811357df7a39f",
+        "android_client_info": {
+          "package_name": "com.techandlearn.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198352650537-i3m2a36d1p35b7pguuvdlqq8hnehc8le.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techandlearn.test",
+            "certificate_hash": "8c92259facfc1d15becaa13f50649174991b11e2"
+          }
+        },
+        {
           "client_id": "198352650537-u4tor8l433bvs7uvto5bea31aorf8mqm.apps.googleusercontent.com",
           "client_type": 3
         }

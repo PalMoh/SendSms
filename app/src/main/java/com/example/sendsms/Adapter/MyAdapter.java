@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.sendsms.Interfaces.CustomLongClick;
 import com.example.sendsms.Model.Contacts;
 import com.example.sendsms.R;
 
@@ -17,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Contacts> contactsList;
+    private CustomLongClick longClick;
 
-    public MyAdapter(List<Contacts> contactsList) {
+    public MyAdapter(List<Contacts> contactsList , CustomLongClick longClick) {
         this.contactsList = contactsList;
+        this.longClick = longClick;
     }
 
     @NonNull
@@ -32,13 +35,21 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
 
-        Contacts contacts = this.contactsList.get(position);
+        final Contacts contacts = this.contactsList.get(position);
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
         myViewHolder.tvName.setText(String.format("Name: %s", contacts.getContactName()));
         myViewHolder.tvNumber.setText(String.format("Number: %s", contacts.getContactNumber()));
+
+        myViewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                longClick.onLongClick(contacts,holder.getAdapterPosition());
+                return true;
+            }
+        });
 
 
     }
